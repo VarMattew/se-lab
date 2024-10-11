@@ -14,6 +14,7 @@ public class TorpedoStore {
 
   private int torpedoCount = 0;
 
+  // Replaced the new Random line here
   private Random generator = new Random();
 
   public TorpedoStore(int numberOfTorpedos){
@@ -32,7 +33,7 @@ public class TorpedoStore {
 
   public boolean fire(int numberOfTorpedos){
     if(numberOfTorpedos < 1 || numberOfTorpedos > this.torpedoCount){
-      throw new IllegalArgumentException("numberOfTorpedos");
+      throw new IllegalArgumentException("numberOfTorpedos"); // added throw
     }
     boolean success = false;
 
@@ -41,7 +42,7 @@ public class TorpedoStore {
 
     if (r >= FAILURE_RATE) {
       // successful firing
-      this.torpedoCount -= numberOfTorpedos;
+      this.torpedoCount -= numberOfTorpedos; // =- instead of -=
       success = true;
     } else {
       // simulated failure
